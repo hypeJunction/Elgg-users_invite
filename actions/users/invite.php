@@ -74,7 +74,7 @@ foreach ($emails as $email) {
 	$subject = elgg_echo('users:invite:notify:subject', array($site->getDisplayName()));
 	$body = elgg_echo('users:invite:notify:body', $notification_params);
 
-	$sent = elgg_send_email($site->email, $email, $subject, $message);
+	$sent = elgg_send_email($site->email, $email, $subject, $body);
 	if ($sent) {
 		$invited++;
 	} else {
