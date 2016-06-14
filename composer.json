@@ -1,0 +1,25 @@
+{
+	"name": "hypejunction/users_invite",
+	"version": "0.0.0",
+	"type": "elgg-plugin",
+	"description": "User Invitations",
+	"homepage": "http://hypejunction.com",
+	"keywords": [
+		"elgg", "plugin", "users", "invitations", "onboarding"
+	],
+	"license": "GPL-2.0",
+	"authors": [
+		{
+			"name": "Ismayil Khayredinov",
+			"email": "info@hypejunction.com"
+		}
+	],
+	"require": {
+		"php": ">=5.5",
+		"composer/installers": "~1.0",
+		"hypejunction/ui_tabs": "~1.0",
+		"hypejunction/forms_api": "~1.0",
+		"hypejunction/elgg_tokeninput": "~4.0"
+	}
+}
+
