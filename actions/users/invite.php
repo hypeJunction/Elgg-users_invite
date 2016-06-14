@@ -69,7 +69,6 @@ foreach ($emails as $email) {
 		)),
 		'message' => ($message) ? elgg_echo('users:invite:notify:message', array($message)) : '',
 		'link' => $link,
-		'code' => ($invite_only) ? elgg_echo('users:invite:notify:code', array($token)) : '',
 	);
 	$subject = elgg_echo('users:invite:notify:subject', array($site->getDisplayName()));
 	$body = elgg_echo('users:invite:notify:body', $notification_params);

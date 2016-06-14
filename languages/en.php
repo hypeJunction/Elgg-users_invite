@@ -11,19 +11,14 @@ return [
 	'users:invite:notify:subject' => 'You are invited to join %s',
 	'users:invite:notify:body' => '%1$s has invited you to join %2$s.
 		%3$s
-		Please visit the following link to create an account: 
+		Please visit the following link to create an account:
 		%4$s
-		%5$s
 		',
 	'users:invite:notify:message' => '
+
 		They have included the following message for you:
 		%s
 
-		',
-	'users:invite:notify:code' => '
-		Please use the following invitation code to register:
-		%s
-		
 		',
 
 	'users:invite:settings:invite_only_network' => 'Invite Only Registration',
@@ -35,5 +30,5 @@ return [
 
 	'users:invite:required_invitecode' => 'Invitation Code',
 	'users:invite:required_invitecode:mismatch' => 'The invitation code you have provided is not valid',
-	
+
 ];
