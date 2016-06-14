@@ -1,6 +1,6 @@
 {
 	"name": "hypejunction/users_invite",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"type": "elgg-plugin",
 	"description": "User Invitations",
 	"homepage": "http://hypejunction.com",
