@@ -18,8 +18,6 @@ $error = 0;
 
 $emails = explode(PHP_EOL, $emails);
 
-$invite_only = elgg_get_plugin_setting('invite_only_network', 'users_invite');
-
 foreach ($emails as $email) {
 	if (empty($email)) {
 		continue;
@@ -31,7 +29,11 @@ foreach ($emails as $email) {
 	}
 	$users = get_user_by_email($email);
 	if ($users) {
-		if (elgg_is_active_plugin('friend_request')) {
+		if ($users[0] == $inviter) {
+			$skipped++;
+			continue;
+		}
+		if (elgg_is_active_plugin('friend_request') && !$inviter->isFriendsWith($users[0]->guid)) {
 			add_entity_relationship($inviter->guid, 'friendrequest', $users[0]->guid);
 		}
 		$skipped++;
