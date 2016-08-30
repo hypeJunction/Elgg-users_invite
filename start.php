@@ -87,9 +87,9 @@ function users_invite_setup_page_menu($hook, $type, $return, $params) {
 	$page_owner = elgg_get_page_owner_entity();
 
 	$return[] = ElggMenuItem::factory([
-				'name' => 'friends:invite',
-				'href' => "friends/$page_owner->username/invite",
-				'text' => elgg_echo('users:invite:invite'),
+		'name' => 'friends:invite',
+		'href' => "friends/$page_owner->username/invite",
+		'text' => elgg_echo('users:invite:invite'),
 	]);
 
 	return $return;
@@ -186,7 +186,14 @@ function users_invite_user_created_event($event, $type, $user) {
 		elgg_set_user_validation_status($user->guid, true, 'invitation_code');
 	}
 
-	$user_invite->delete();
+	// Allow other plugins to attach custom logic
+	$params = [
+		'invite' => $user_invite,
+		'user' => $user,
+	];
+	if (elgg_trigger_plugin_hook('accept', 'invite', $params, true)) {
+		$user_invite->delete();
+	}
 
 	elgg_set_ignore_access($ia);
 }
@@ -264,7 +271,7 @@ function users_invite_generate_registration_link($hook, $type, $return, $params)
 	if ($friend_guid) {
 		add_entity_relationship($user_invite->guid, 'invited_by', $friend_guid);
 	}
-	
+
 	$time = time();
 
 	// We won't be validating HMAC, but it may come in handy
@@ -273,7 +280,7 @@ function users_invite_generate_registration_link($hook, $type, $return, $params)
 	$token = elgg_build_hmac([
 		'e' => $email,
 		'ts' => $time,
-			])->getToken();
+	])->getToken();
 
 	$link = elgg_http_add_url_query_elements($return, [
 		'e' => $email,
